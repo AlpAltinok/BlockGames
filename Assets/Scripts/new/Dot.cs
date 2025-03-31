@@ -233,7 +233,7 @@ public class Dot : MonoBehaviour
             otherDot.GetComponent<Dot>().row += 1;
             row -= 1;
         }
-
+       
         StartCoroutine(CheckMoveCo());
     }
 

@@ -108,11 +108,11 @@ MonoBehaviour:
   otherDot: {fileID: 0}
   swipeAngle: 0
   swipeResist: 1
-  isColorBomb: 1
+  isColorBomb: 0
   isColumnBomb: 0
   isRowBomb: 0
-  isAdjacentBomb: 0
-  adjacentMarker: {fileID: 4824748044117277102, guid: 4946264252bf1454786fa6ba1082344d, type: 3}
+  isAdjacentBomb: 1
+  adjacentMarker: {fileID: 2394766301440808104, guid: e6241979aed7bbc40bc33c270859df37, type: 3}
   rowArrow: {fileID: 2685245773606348890, guid: 1d68b53e1cbd9bf49a74412f9ef91781, type: 3}
   columnArrow: {fileID: 1692356349811354288, guid: c6f629aeb15423148a75bf4ca0459420, type: 3}
   colorBomb: {fileID: 4824748044117277102, guid: 4946264252bf1454786fa6ba1082344d, type: 3}
