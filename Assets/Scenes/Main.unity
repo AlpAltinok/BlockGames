@@ -226,6 +226,7 @@ MonoBehaviour:
   - {fileID: 8249992400162293654, guid: 9207118cd6551114ba7ff753754a37fa, type: 3}
   - {fileID: 2284084138683777625, guid: de305ccb31014d14aa2c636b2dd8df30, type: 3}
   destroyParticle: {fileID: 2105934942702122249, guid: 4583ba495ab0b7a4e83b6f00b30ab8e0, type: 3}
+  breakabletileprefab: {fileID: 4062386464141549581, guid: abbe454e3b48c0e4a85b51ed8244d12f, type: 3}
   boardllayout:
   - x: 4
     y: 4
@@ -236,9 +237,15 @@ MonoBehaviour:
   - x: 4
     y: 5
     tileKind: 1
-  - x: 4
-    y: 6
-    tileKind: 1
+  - x: 1
+    y: 3
+    tileKind: 0
+  - x: 1
+    y: 4
+    tileKind: 0
+  - x: 1
+    y: 5
+    tileKind: 0
   currentDot: {fileID: 0}
 --- !u!1 &1918614349
 GameObject:

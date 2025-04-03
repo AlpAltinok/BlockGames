@@ -30,8 +30,10 @@ public class NewBoard : MonoBehaviour
     public GameObject tilePrefab;
     public GameObject[] dots;
     public GameObject destroyParticle;
+    public GameObject breakabletileprefab;
     public TileType[] boardllayout;
     private bool[,] BlankSpaces;
+    BackgroundTile[,] brekableTiles;
     private BackgroundTile[,] allTiles;
     public GameObject[,] allDots;
     public Dot currentDot;
@@ -42,6 +44,7 @@ public class NewBoard : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        brekableTiles=new BackgroundTile[width,height];
         findMatches = FindObjectOfType<FindMatches>();
         BlankSpaces = new bool[width, height];
         allDots = new GameObject[width, height];
@@ -58,9 +61,28 @@ public class NewBoard : MonoBehaviour
             }
         }
     }
+
+    public void GenerateBreakableTiles()
+    {
+        // Look at all the tiles in the layout
+        for (int i = 0; i < boardllayout.Length; i++)
+        {
+            // if a tile is a "Jelly" tile
+            if (boardllayout[i].tileKind == TileKKind.Breakable)
+            {
+                // Create a "Jelly" tile at that position
+                Vector2 tempPosition = new Vector2(boardllayout[i].x, boardllayout[i].y);
+                GameObject tile = Instantiate(breakabletileprefab, tempPosition, Quaternion.identity);
+                brekableTiles[boardllayout[i].x, boardllayout[i].y] = tile.GetComponent<BackgroundTile>();
+            }
+        }
+    }
+
+
     private void SetUp()
     {
         GenerateBlankSpaces();
+        GenerateBreakableTiles();
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
@@ -241,6 +263,20 @@ public class NewBoard : MonoBehaviour
             if (findMatches.currentMatches.Count >= 4)
             {
                 CheckToMakeBombs();
+            }
+
+            if (brekableTiles[column, row] != null)
+            {
+                // if it does, give one damage.
+                brekableTiles[column, row].TakeDamage(1);
+            }
+            if (brekableTiles[column, row] != null)
+            {
+                brekableTiles[column,row].TakeDamage(1);
+                if (brekableTiles[column, row].hitPoints <= 0)
+                {
+                    brekableTiles[column,row]=null;
+                }
             }
 
             GameObject particle = Instantiate(destroyParticle,
